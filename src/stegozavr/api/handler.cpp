@@ -1,3 +1,4 @@
+#include <stegozavr/api/handlers.hpp>
 #include <iostream>
 
 void Foo() {

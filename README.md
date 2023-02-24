@@ -1,1 +1,1 @@
-# SteganographicService
+# Stegozavr.

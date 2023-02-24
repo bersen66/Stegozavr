@@ -13,7 +13,7 @@ add_subdirectory(third_party/userver)
 
 add_library(
     BACKEND OBJECT
-    src/api/handler.cpp
+        src/stegozavr/api/handler.cpp
     )
 
 add_executable(${PROJECT_NAME} src/main.cpp)
