@@ -1,0 +1,11 @@
+set(TESTS_SOURCES engine_tests.cpp)
+add_executable(EngineTests ${TESTS_SOURCES})
+
+find_package(GTest REQUIRED)
+if (${GTEST_FOUND})
+    message("GTEST FOOND!")
+    include_directories(${GTEST_INCLUDE_DIRS})
+    target_link_libraries(EngineTests ${GTEST_LIBRARIES})
+elseif()
+    message("GTEST NOT FOUND!")
+endif()
