@@ -3,7 +3,6 @@
 
 int main(int argc, char** argv)
 {
-
   // clang-format off
   const auto server_components =
       userver::components::MinimalComponentList()

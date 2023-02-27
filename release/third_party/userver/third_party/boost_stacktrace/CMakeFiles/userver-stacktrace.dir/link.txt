@@ -1,0 +1,2 @@
+/usr/bin/ar qc libuserver-stacktrace.a CMakeFiles/userver-stacktrace.dir/src/backtrace.cpp.o
+/usr/bin/ranlib libuserver-stacktrace.a

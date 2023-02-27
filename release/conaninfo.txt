@@ -1,0 +1,39 @@
+[settings]
+    arch=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=11
+    os=Linux
+
+[requires]
+    gtest/cci.20210126
+
+[options]
+
+
+[full_settings]
+    arch=x86_64
+    arch_build=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=11
+    os=Linux
+    os_build=Linux
+
+[full_requires]
+    gtest/cci.20210126:4fefe176018d6564b5e2144163a209c027be31c5
+
+[full_options]
+    gtest:build_gmock=True
+    gtest:fPIC=True
+    gtest:hide_symbols=False
+    gtest:no_main=False
+    gtest:shared=False
+
+[recipe_hash]
+
+
+[env]
+
