@@ -10,7 +10,7 @@ namespace api::v1
 class DecodeHandler final : public userver::server::handlers::HttpHandlerJsonBase
 {
 public:
-  static constexpr std::string_view kName = "decode-handler";
+  static constexpr std::string_view kName = "handler-decode";
   using userver::server::handlers::HttpHandlerJsonBase::HttpHandlerJsonBase;
 
   userver::formats::json::Value HandleRequestJsonThrow(
