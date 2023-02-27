@@ -1,2 +1,0 @@
-/usr/bin/ar qc libuserver-compiler-rt-parts.a CMakeFiles/userver-compiler-rt-parts.dir/lib/builtins/muloti4.c.o
-/usr/bin/ranlib libuserver-compiler-rt-parts.a
