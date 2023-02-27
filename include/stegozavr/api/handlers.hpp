@@ -1,5 +1,9 @@
 #pragma once
 
-/***
-* Here will be declarations of API methods.
+/**
+* Declarations of API handlers.
 */
+
+
+#include "stegozavr/api/v1/decode.hpp"
+#include "stegozavr/api/v1/encode.hpp"

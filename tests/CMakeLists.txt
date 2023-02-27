@@ -1,4 +1,5 @@
 set(TESTS_SOURCES engine_tests.cpp)
+set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 add_executable(EngineTests ${TESTS_SOURCES})
 
 find_package(GTest REQUIRED)
