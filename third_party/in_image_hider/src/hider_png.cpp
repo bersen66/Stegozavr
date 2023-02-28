@@ -1,5 +1,10 @@
 #include "in_image_hider/hider_png.h"
 
+/**
+ * define STEG_ENABLE_DEBUG macro, if you want to see debug information.
+ */
+
+
 namespace hider_png_internal
 {
 
@@ -133,6 +138,7 @@ void hider_png::encode(const std::string &filename, const std::vector<uint8_t> &
 			return bits;
 		}();
 
+#ifdef STEG_ENABLE_DEBUG
 	std::cout << "RECEIVED BITS FOR ENCODE - " << bits << "\n\n";
 
 	std::cout << "SIGNATURE SIZE - " << SIGN_PX_CNT * 3 << " bit.\n";
@@ -143,7 +149,7 @@ void hider_png::encode(const std::string &filename, const std::vector<uint8_t> &
 	std::cout << "TOTAL BITS - " << bits_cnt << " bit.\n\n";
 
 	std::cout << "PIXELS USED - " << ceil(bits_cnt / 3) << " px.\n";
-
+#endif  // STEG_ENABLE_DEBUG
 	hider_png_internal::encode(image, bits);
 }
 
@@ -191,8 +197,9 @@ std::vector<uint8_t> hider_png::decode(const std::string &filename)
 
 	if (signature_bits_received != signature_bits)
 		exit(1);
-
+#ifdef STEG_ENABLE_DEBUG
 	std::cout << "\nSIGNATURE CORRECT - " << signature_bits_received << "\n";
+#endif // STEG_ENABLE_DEBUG
 //
 
 
@@ -238,8 +245,9 @@ std::vector<uint8_t> hider_png::decode(const std::string &filename)
 			}
 		}
 	}
-
+#ifdef STEG_ENABLE_DEBUG
 	std::cout << "TYPE - " << type_bits_received << "\n";
+#endif // STEG_ENABLE_DEBUG
 //
 
 // GETTING DATA SIZE
@@ -278,8 +286,9 @@ std::vector<uint8_t> hider_png::decode(const std::string &filename)
 			}
 		}
 	}
-
+#ifdef STEG_ENABLE_DEBUG
 	std::cout << "DSS - " << dss << " | DATA SIZE - " << data_size << "\n";
+#endif // STEG_ENABLE_DEBUG
 //
 
 // GETTING DATA SIZE
@@ -318,8 +327,9 @@ std::vector<uint8_t> hider_png::decode(const std::string &filename)
 			}
 		}
 	}
-
+#ifdef STEG_ENABLE_DEBUG
 	std::cout << "DATA - " << data << "\n";
+#endif // STEG_ENABLE_DEBUG
 //
 
 	const std::vector<uint8_t> data_bytes =

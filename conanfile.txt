@@ -1,6 +1,7 @@
 [requires]
 gtest/cci.20210126
 libpng/1.6.39
+boost/1.74.0
 
 [generators]
 cmake_find_package
