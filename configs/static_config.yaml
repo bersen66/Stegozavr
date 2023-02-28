@@ -25,7 +25,7 @@ components_manager:
             loggers:
                 default:
                     file_path: '@stderr'
-                    level: debug
+                    level: error
                     overflow_behavior: discard  # Drop logs if the system is too busy to write them down.
 
         tracer:                           # Component that helps to trace execution times and requests in logs.

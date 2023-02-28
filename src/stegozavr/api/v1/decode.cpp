@@ -7,6 +7,7 @@ userver::formats::json::Value DecodeHandler::HandleRequestJsonThrow(const userve
                                                              const userver::formats::json::Value& request_json,
                                                              userver::server::request::RequestContext& context) const
 {
+
   return userver::formats::json::Value();
 }
 

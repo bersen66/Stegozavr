@@ -1,3 +1,10 @@
 [submodule "third_party/userver"]
 	path = third_party/userver
 	url = git@github.com:userver-framework/userver.git
+[submodule "third_party/in_image_hider"]
+	path = third_party/in_image_hider
+	url = git@github.com:nothingIIersonal/in_image_hider.git
+
+[submodule "third_party/png-plusplus"]
+	path = third_party/png-plusplus
+	url = git@github.com:mecwerks/png-plusplus.git
