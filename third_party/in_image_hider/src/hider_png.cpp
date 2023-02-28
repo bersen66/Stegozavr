@@ -1,5 +1,4 @@
-#include "hider_png.h"
-
+#include "in_image_hider/hider_png.h"
 
 namespace hider_png_internal
 {
