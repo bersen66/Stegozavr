@@ -16,10 +16,10 @@ add_subdirectory(third_party/userver)
 include_directories(third_party/in_image_hider/include)
 include_directories(third_party/png++/include)
 
-#find_package(Boost REQUIRED)
-#if (${Boost_FOUND})
-#    include_directories(${Boost_INCLUDE_DIRS})
-#endif()
+find_package(Boost REQUIRED)
+if (${Boost_FOUND})
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
 
 add_library(
         BACKEND OBJECT
@@ -27,6 +27,7 @@ add_library(
         src/stegozavr/api/v1/decode.cpp
         src/stegozavr/engine/decode/decode.cpp
         src/stegozavr/engine/encode/encode.cpp
+        src/stegozavr/engine/utils/files.cpp
         third_party/in_image_hider/src/hider_png.cpp
 
 )

@@ -1,8 +1,7 @@
-#include "in_image_hider/hider_png.h"
+#include <in_image_hider/hider_png.h>
 
 /**
  * define STEG_ENABLE_DEBUG macro, if you want to see debug information.
- *
  */
 
 namespace hider_png
