@@ -1,27 +1,26 @@
 #pragma once
 
-
-#include <iostream>
-#include <vector>
-#include <cinttypes>
-#include <png++/png.hpp>
-#include <bitset>
-#include <climits>
 #include <algorithm>
-#include <cmath>
+#include <bitset>
 #include <boost/dynamic_bitset.hpp>
+#include <cinttypes>
+#include <climits>
+#include <cmath>
+#include <iostream>
+#include <png++/png.hpp>
+#include <vector>
 
-
-template <typename T>
-using bdb = boost::dynamic_bitset<T>;
-
+template <typename T> using bdb = boost::dynamic_bitset<T>;
 
 namespace hider_png
 {
 
+void encode(const std::string& filename, const std::vector<uint8_t>& data, const uint8_t& data_type);
+std::vector<uint8_t> decode(const std::string& filename);
 
-	void encode(const std::string &filename, const std::vector<uint8_t> &data, const uint8_t &data_type);
-	std::vector<uint8_t> decode(const std::string &filename);
+namespace custom
+{
+void encode(std::istream& content, const std::string& path_to_output, const std::vector<uint8_t>& data);
+} // namespace custom
 
-
-} // end hider_png
+} // namespace hider_png
