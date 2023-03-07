@@ -68,7 +68,7 @@ void encode(png::image<png::rgb_pixel>& image, const bdb<uint8_t>& bits)
     }
   }
 
-  image.write(OUT_FILENAME);
+  //image.write(OUT_FILENAME);
 }
 
 

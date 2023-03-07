@@ -29,7 +29,6 @@ add_library(
         src/stegozavr/engine/encode/encode.cpp
         src/stegozavr/engine/utils/files.cpp
         third_party/in_image_hider/src/hider_png.cpp
-
 )
 
 find_package(PNG REQUIRED)
@@ -45,16 +44,7 @@ target_link_libraries(BACKEND userver-core)
 target_link_libraries(${PROJECT_NAME}  BACKEND)
 
 #TESTING:
-#
-#set(TESTS_SOURCES tests/engine_tests.cpp)
-#add_executable(EngineTests ${TESTS_SOURCES})
-#
-#find_package(GTest REQUIRED)
-#if (${GTEST_FOUND})
-#    message("GTEST FOOND!")
-#    include_directories(${GTEST_INCLUDE_DIR})
-#    target_link_libraries(EngineTests ${GTEST_LIBRARIES})
-#elseif()
-#    message("GTEST NOT FOUND!")
-#endif()
-
+option(STEGOZAVR_ENABLE_UNIT_TESTS "Compile unit tests" OFF)
+if (STEGOZAVR_ENABLE_UNIT_TESTS)
+    add_subdirectory(tests)
+endif()
