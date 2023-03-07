@@ -12,3 +12,4 @@ $ pip install cmake
 
 * ```make build-release``` - to build service in release mode.
 * ```make run-release``` - to run build and run service in release mode.
+*  ```make run-tests``` - to build project and run unit-tests
