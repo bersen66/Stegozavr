@@ -339,51 +339,10 @@ namespace custom
 namespace impl
 {
 
-void encode(png::image<png::rgb_pixel>& image, const std::string& path_to_output, const bdb<uint8_t>& bits)
-{
-  const uint64_t bits_size = bits.size();
-
-  uint64_t x = 0, y = 0;
-  uint64_t bits_cnt = bits_size;
-  uint64_t cur_bit_i = bits_size - 1;
-
-  while (bits_cnt)
-  {
-    png::byte rgb[] = {image[y][x].red, image[y][x].green, image[y][x].blue};
-
-    for (uint8_t k = 0; (k < 3) && bits_cnt; ++k, --bits_cnt)
-    {
-      if (bits[cur_bit_i--] == 0)
-      {
-        rgb[k] &= 0b11111110;
-      }
-      else
-      {
-        rgb[k] |= 0b00000001;
-      }
-    }
-
-    image[y][x] = png::rgb_pixel(rgb[0], rgb[1], rgb[2]);
-
-    if (++x == image.get_width())
-    {
-      x = 0;
-      ++y;
-    }
-  }
-
-  image.write(path_to_output);
-}
-
-} // namespace impl
-
-void encode(std::istream& content, const std::string& path_to_output, const std::vector<uint8_t>& data)
-{
-  png::image<png::rgb_pixel> image(content);
-  constexpr uint8_t data_type = 0;
-
-  const uint64_t data_bits_cnt = data.size() * 8;
-  const uint64_t dss = hider_png_internal::get_dss(image);
+void run_lsb(png::image<png::rgb_pixel>& container, std::string_view text_to_hide) {
+  constexpr int data_type = 0;
+  const uint64_t data_bits_cnt = text_to_hide.size() * 8;
+  const uint64_t dss = hider_png_internal::get_dss(container);
   const uint64_t bits_cnt = SIGN_PX_CNT * 3 + DATA_TYPE_BITS_CNT + dss + data_bits_cnt;
 
   const bdb<uint8_t>& signature_bits = hider_png_internal::signature_bits_boost;
@@ -391,7 +350,7 @@ void encode(std::istream& content, const std::string& path_to_output, const std:
   const bdb<uint8_t> data_size_bits(dss, data_bits_cnt);
 
   const auto bits = [&signature_bits, &type_bits, &dss, &data_size_bits, &data_bits_cnt, &bits_cnt,
-                     &data]() -> bdb<uint8_t> {
+                     &text_to_hide]() -> bdb<uint8_t> {
     bdb<uint8_t> bits(bits_cnt);
 
     for (int64_t i = SIGN_PX_CNT * 3 - 1; i >= 0; --i)
@@ -412,32 +371,37 @@ void encode(std::istream& content, const std::string& path_to_output, const std:
       bits |= bdb<uint8_t>(bits_cnt, data_size_bits[i]);
     }
 
-    for (int64_t i = 0; i < data.size(); ++i)
+    for (int64_t i = 0; i < text_to_hide.size(); ++i)
     {
       for (int64_t j = 0; j < 8; ++j)
       {
         bits <<= 1;
-        bits |= bdb<uint8_t>(bits_cnt, (data[i] & (0b10000000 >> j)) >> (7 - j));
+        bits |= bdb<uint8_t>(bits_cnt, (text_to_hide[i] & (0b10000000 >> j)) >> (7 - j));
       }
     }
 
     return bits;
   }();
 
-#ifdef STEG_ENABLE_DEBUG
-  std::cout << "RECEIVED BITS FOR ENCODE - " << bits << "\n\n";
-
-  std::cout << "SIGNATURE SIZE - " << SIGN_PX_CNT * 3 << " bit.\n";
-  std::cout << "TYPE SIZE - " << DATA_TYPE_BITS_CNT << " bit.\n";
-  std::cout << "DATA SIZE - " << dss << " bit.\n";
-  std::cout << "DATA - " << data_bits_cnt << " bit.\n\n";
-
-  std::cout << "TOTAL BITS - " << bits_cnt << " bit.\n\n";
-
-  std::cout << "PIXELS USED - " << ceil(bits_cnt / 3) << " px.\n";
-#endif // STEG_ENABLE_DEBUG
-  impl::encode(image, path_to_output, bits);
+  hider_png_internal::encode(container, bits);
 }
+
+png::image<png::rgb_pixel> encode(std::istream& container, std::string_view text_to_hide) {
+  png::image<png::rgb_pixel> src_image(container);
+  run_lsb(src_image, text_to_hide);
+  return src_image;
+}
+
+} // namespace impl
+
+
+void encode(std::istream& container, std::string_view text_to_hide, std::ostream& out) {
+  auto encoded_image = impl::encode(container, text_to_hide);
+  encoded_image.write_stream(out);
+}
+
+
+
 
 } // namespace custom
 

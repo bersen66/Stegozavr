@@ -20,7 +20,7 @@ std::vector<uint8_t> decode(const std::string& filename);
 
 namespace custom
 {
-void encode(std::istream& content, const std::string& path_to_output, const std::vector<uint8_t>& data);
+void encode(std::istream& container, std::string_view text_to_hide, std::ostream& result);
 } // namespace custom
 
 } // namespace hider_png

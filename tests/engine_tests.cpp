@@ -1,10 +1,12 @@
 #include <iostream>
 #include <gtest/gtest.h>
+#include <stegozavr/engine/engine.hpp>
 
 /**
  * Just checking that it works
  */
-TEST(T1, 1) {
+TEST(Encode, 1) {
+
   ASSERT_EQ(1, 1);
 }
 

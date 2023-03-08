@@ -6,7 +6,6 @@
 
 namespace stegozavr::engine::blocking
 {
-
-void Encode(std::string& file_content, const std::vector<uint8_t>& text_to_hide);
+std::string Encode(std::string_view image_data, std::string_view text_to_hide);
 
 } // namespace stegozavr::engine::blocking

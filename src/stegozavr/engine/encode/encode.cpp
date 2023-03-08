@@ -4,33 +4,29 @@
 
 #include <in_image_hider/hider_png.h>
 
-
 namespace stegozavr::engine::blocking
 {
 
-void Encode(std::string& file_content, const std::vector<uint8_t>& text_to_hide)
+namespace impl
 {
-  namespace fs = userver::fs::blocking;
-  auto temp_file = fs::TempFile::Create();
+std::string Encode(std::istream& steg_container, std::string_view text_to_hide)
+{
+  std::stringstream output_image(std::ios::binary | std::ios::in | std::ios::out);
 
-  std::fstream src(temp_file.GetPath(), std::ios::binary);
-  src.write(file_content.data(), file_content.size());
-  src.close();
+  hider_png::custom::encode(steg_container, text_to_hide, output_image);
 
-  //::hider_png::custom::encode(temp_file.GetPath(), {file_content.begin(), file_content.end()}, 0);
+  std::string result = output_image.str();
+  return result;
+}
 
+} // namespace impl
 
+std::string Encode(std::string_view image_data, std::string_view text_to_hide)
+{
+  std::stringstream image(std::ios::binary | std::ios::in | std::ios::out);
+  image.write(image_data.data(), image_data.size());
 
-
-//  std::stringstream content(file_content, std::ios::binary);
-//
-//  //::hider_png::custom::encode(content, temp_file.GetPath(), text_to_hide);
-//
-//  std::fstream res_content(temp_file.GetPath(), std::ios::binary);
-//
-//  file_content = ::stegozavr::engine::utils::blocking::ContentOf(res_content);
-
-
+  return  impl::Encode(image, text_to_hide);
 }
 
 } // namespace stegozavr::engine::blocking
