@@ -1,12 +1,10 @@
 #pragma once
 
-#include <vector>
-#include <cstdint>
+#include <string>
+#include <string_view>
 
-namespace stegozavr {
-namespace engine {
+namespace stegozavr::engine::blocking {
 
-std::vector<uint8_t> Decode();
+std::string Decode(std::string_view image_data);
 
-} // namespace engine
-} // namespace stegozavr
+} // namespace stegozavr::engine::blocking

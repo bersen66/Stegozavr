@@ -17,15 +17,26 @@ userver::formats::json::Value EncodeHandler::HandleRequestJsonThrow(
   LOG_INFO() << "Started encoding";
   json::ValueBuilder value_builder;
 
-  if (request_json.HasMember("text_to_hide") && request_json.HasMember("file_content")) {
+  if (request_json.HasMember("text_to_hide") && request_json.HasMember("file_content"))
+  {
     LOG_DEBUG() << "Request contains all fields";
 
     auto file_content = base64::Base64Decode(request_json["file_content"].As<std::string>());
     auto text_to_hide = request_json["text_to_hide"].As<std::string>();
 
-    value_builder["status"] = "Ok";
-    value_builder["result"] = base64::Base64Encode(engine::blocking::Encode(file_content, text_to_hide));
-  } else {
+    try
+    {
+      value_builder["result"] = base64::Base64Encode(engine::blocking::Encode(file_content, text_to_hide));
+      value_builder["status"] = "Ok";
+    }
+    catch (const std::exception& exception)
+    {
+      value_builder["status"] = "Error";
+      value_builder["info"] = exception.what();
+    }
+  }
+  else
+  {
     LOG_DEBUG() << "Required fields is missing";
     value_builder["status"] = "Error";
     value_builder["message"] = "Required field is missing. See doc for explanation.";

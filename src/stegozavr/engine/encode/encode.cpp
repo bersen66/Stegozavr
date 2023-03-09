@@ -2,7 +2,7 @@
 #include <stegozavr/engine/utils/files.hpp>
 #include <userver/fs/blocking/temp_file.hpp>
 
-#include "userver/logging/log.hpp"
+#include <userver/logging/log.hpp>
 #include <in_image_hider/hider_png.h>
 
 namespace stegozavr::engine::blocking

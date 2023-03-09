@@ -21,6 +21,8 @@ std::vector<uint8_t> decode(const std::string& filename);
 namespace custom
 {
 void encode(std::istream& container, std::string_view text_to_hide, std::ostream& result);
+
+std::string decode(std::istream& container);
 } // namespace custom
 
 } // namespace hider_png
