@@ -12,6 +12,7 @@ include(GNUInstallDirs)
 
 add_subdirectory(third_party/userver)
 
+
 # INCLUDING STEGANOGRAPHIC ENGINE
 include_directories(third_party/in_image_hider/include)
 include_directories(third_party/png++/include)
@@ -48,3 +49,4 @@ option(STEGOZAVR_ENABLE_UNIT_TESTS "Compile unit tests" OFF)
 if (STEGOZAVR_ENABLE_UNIT_TESTS)
     add_subdirectory(tests)
 endif()
+
