@@ -7,6 +7,11 @@
 namespace api::v1
 {
 
+/**
+ * This API handler is
+ *
+ */
+
 class EncodeHandler final : public userver::server::handlers::HttpHandlerJsonBase
 {
 public:
