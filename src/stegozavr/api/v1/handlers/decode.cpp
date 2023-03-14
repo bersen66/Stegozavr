@@ -6,6 +6,12 @@
 namespace api::v1::handlers
 {
 
+Decode::Decode(const userver::components::ComponentConfig& config, const userver::components::ComponentContext& context)
+    : userver::server::handlers::HttpHandlerJsonBase(config, context)
+{
+  LOG_INFO() << "HANDLER: Decode started";
+}
+
 userver::formats::json::Value Decode::HandleRequestJsonThrow(
     const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
     userver::server::request::RequestContext& context) const
@@ -40,5 +46,6 @@ userver::formats::json::Value Decode::HandleRequestJsonThrow(
 
   return value_builder.ExtractValue();
 }
+
 
 } // namespace api::v1::handlers

@@ -6,6 +6,13 @@
 namespace api::v1::handlers
 {
 
+Encode::Encode(const userver::components::ComponentConfig& config, const userver::components::ComponentContext& context)
+    : userver::server::handlers::HttpHandlerJsonBase(config, context)
+{
+  LOG_INFO() << "HANDLER: Encode started";
+}
+
+
 userver::formats::json::Value Encode::HandleRequestJsonThrow(
     const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
     userver::server::request::RequestContext& context) const
@@ -33,6 +40,7 @@ userver::formats::json::Value Encode::HandleRequestJsonThrow(
     {
       value_builder["status"] = "Error";
       value_builder["info"] = exception.what();
+      LOG_INFO() << "Exception occured: "<< exception.what();
     }
   }
   else
