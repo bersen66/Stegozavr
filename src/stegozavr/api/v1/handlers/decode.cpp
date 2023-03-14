@@ -12,9 +12,9 @@ Decode::Decode(const userver::components::ComponentConfig& config, const userver
   LOG_INFO() << "HANDLER: Decode started";
 }
 
-userver::formats::json::Value Decode::HandleRequestJsonThrow(
-    const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
-    userver::server::request::RequestContext& context) const
+userver::formats::json::Value Decode::HandleRequestJsonThrow(const userver::server::http::HttpRequest& request,
+                                                             const userver::formats::json::Value& request_json,
+                                                             userver::server::request::RequestContext& context) const
 {
   namespace json = ::userver::formats::json;
   namespace base64 = ::userver::crypto::base64;
@@ -35,6 +35,7 @@ userver::formats::json::Value Decode::HandleRequestJsonThrow(
     {
       value_builder["status"] = "Error";
       value_builder["info"] = exc.what();
+      LOG_INFO() << "Exception occured: " << exc.what();
     }
   }
   else
@@ -46,6 +47,5 @@ userver::formats::json::Value Decode::HandleRequestJsonThrow(
 
   return value_builder.ExtractValue();
 }
-
 
 } // namespace api::v1::handlers
