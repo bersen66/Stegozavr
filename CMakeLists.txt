@@ -42,12 +42,12 @@ endif()
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
-target_link_libraries(BACKEND userver-core)
+target_link_libraries(BACKEND userver-core userver-postgresql)
 target_link_libraries(${PROJECT_NAME}  BACKEND)
 
 #TESTING:
 option(STEGOZAVR_ENABLE_UNIT_TESTS "Compile unit tests" OFF)
 if (STEGOZAVR_ENABLE_UNIT_TESTS)
-    add_subdirectory(tests)
+    add_subdirectory(tests/unit)
 endif()
 

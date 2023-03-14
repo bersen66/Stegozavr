@@ -8,6 +8,7 @@ int main(int argc, char** argv)
   // clang-format off
   const auto server_components =
       userver::components::MinimalServerComponentList()
+        .Append<api::v1::RegisterHandler>()
         .Append<api::v1::DecodeHandler>()
         .Append<api::v1::EncodeHandler>();
   // clang-format on
