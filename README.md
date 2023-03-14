@@ -1,5 +1,7 @@
 # Stegozavr.
 
+* Just university project.
+
 ## Installation
 
 To build service from sources you have to install conan and cmake. 
