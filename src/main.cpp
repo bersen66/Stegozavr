@@ -8,9 +8,9 @@ int main(int argc, char** argv)
   // clang-format off
   const auto server_components =
       userver::components::MinimalServerComponentList()
-        .Append<api::v1::RegisterHandler>()
-        .Append<api::v1::DecodeHandler>()
-        .Append<api::v1::EncodeHandler>();
+        .Append<api::v1::handlers::RegisterUser>()
+        .Append<api::v1::handlers::Decode>()
+        .Append<api::v1::handlers::Encode>();
   // clang-format on
   return userver::utils::DaemonMain(argc, argv, server_components);
 }

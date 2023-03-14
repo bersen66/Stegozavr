@@ -4,7 +4,7 @@
 #include <userver/server/handlers/http_handler_json_base.hpp>
 #include <userver/utils/daemon_run.hpp>
 
-namespace api::v1
+namespace api::v1::handlers
 {
 
 /**
@@ -12,7 +12,7 @@ namespace api::v1
  *
  */
 
-class EncodeHandler final : public userver::server::handlers::HttpHandlerJsonBase
+class Encode final : public userver::server::handlers::HttpHandlerJsonBase
 {
 public:
   static constexpr std::string_view kName = "handler-encode";
@@ -25,4 +25,4 @@ public:
 private:
 };
 
-} // namespace api::v1
+} // namespace api::v1::handlers

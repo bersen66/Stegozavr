@@ -24,9 +24,9 @@ endif()
 
 add_library(
         BACKEND OBJECT
-        src/stegozavr/api/v1/encode.cpp
-        src/stegozavr/api/v1/decode.cpp
-        src/stegozavr/api/v1/register.cpp
+        src/stegozavr/api/v1/handlers/encode.cpp
+        src/stegozavr/api/v1/handlers/decode.cpp
+        src/stegozavr/api/v1/handlers/register_user.cpp
         src/stegozavr/engine/decode/decode.cpp
         src/stegozavr/engine/encode/encode.cpp
         src/stegozavr/engine/utils/files.cpp

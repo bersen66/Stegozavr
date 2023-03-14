@@ -1,12 +1,12 @@
-#include <stegozavr/api/v1/encode.hpp>
+#include <stegozavr/api/v1/handlers/encode.hpp>
 #include <stegozavr/engine/encode/encode.hpp>
 #include <userver/crypto/base64.hpp>
 #include <userver/logging/log.hpp>
 
-namespace api::v1
+namespace api::v1::handlers
 {
 
-userver::formats::json::Value EncodeHandler::HandleRequestJsonThrow(
+userver::formats::json::Value Encode::HandleRequestJsonThrow(
     const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
     userver::server::request::RequestContext& context) const
 {
@@ -46,4 +46,4 @@ userver::formats::json::Value EncodeHandler::HandleRequestJsonThrow(
   return value_builder.ExtractValue();
 }
 
-} // namespace api::v1
+} // namespace api::v1::handlers
