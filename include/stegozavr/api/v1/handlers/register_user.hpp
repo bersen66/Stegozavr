@@ -11,14 +11,15 @@ namespace api::v1::handlers {
 
 class RegisterUser final : public userver::server::handlers::HttpHandlerJsonBase {
 public:
-  static constexpr std::string_view kName = "handler-register";
+  static constexpr std::string_view kName = "handler-register-user";
   using userver::server::handlers::HttpHandlerJsonBase::HttpHandlerJsonBase;
 
   RegisterUser(const userver::components::ComponentConfig& config,
-                  const userver::components::ComponentContext& context);
+               const userver::components::ComponentContext& context);
 
   userver::formats::json::Value HandleRequestJsonThrow(
-      const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
+      const userver::server::http::HttpRequest& request,
+      const userver::formats::json::Value& request_json,
       userver::server::request::RequestContext& context) const override;
 
 private:

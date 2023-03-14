@@ -7,6 +7,7 @@ RegisterUser::RegisterUser(const userver::components::ComponentConfig& config,
   : userver::server::handlers::HttpHandlerJsonBase(config, context),
     pg_cluster_(context.FindComponent<userver::components::Postgres>("stegozavr").GetCluster())
 {
+  LOG_DEBUG() << "RegisterUser started";
 }
 
 

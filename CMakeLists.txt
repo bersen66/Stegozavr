@@ -27,6 +27,7 @@ add_library(
         src/stegozavr/api/v1/handlers/encode.cpp
         src/stegozavr/api/v1/handlers/decode.cpp
         src/stegozavr/api/v1/handlers/register_user.cpp
+        src/stegozavr/api/v1/handlers/get_token.cpp
         src/stegozavr/engine/decode/decode.cpp
         src/stegozavr/engine/encode/encode.cpp
         src/stegozavr/engine/utils/files.cpp
