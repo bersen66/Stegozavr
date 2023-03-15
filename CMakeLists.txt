@@ -28,6 +28,7 @@ add_library(
         src/stegozavr/api/v1/handlers/decode.cpp
         src/stegozavr/api/v1/handlers/register_user.cpp
         src/stegozavr/api/v1/handlers/get_token.cpp
+        src/stegozavr/api/v1/handlers/impl/db_utils.cpp
         src/stegozavr/engine/decode/decode.cpp
         src/stegozavr/engine/encode/encode.cpp
         src/stegozavr/engine/utils/files.cpp
@@ -43,7 +44,7 @@ endif()
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
-target_link_libraries(BACKEND userver-core userver-postgresql)
+target_link_libraries(BACKEND userver-core userver-postgresql userver-universal)
 target_link_libraries(${PROJECT_NAME}  BACKEND)
 
 #TESTING:

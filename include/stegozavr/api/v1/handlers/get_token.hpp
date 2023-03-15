@@ -7,6 +7,10 @@
 #include <userver/storages/postgres/cluster.hpp>
 #include <userver/storages/postgres/component.hpp>
 
+#include <string>
+#include <string_view>
+
+
 namespace api::v1::handlers
 {
 
@@ -21,18 +25,17 @@ public:
   userver::formats::json::Value HandleRequestJsonThrow(
       const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
       userver::server::request::RequestContext& context) const override;
+
 private:
+  std::string GenerateToken(userver::storages::postgres::Transaction& transaction) const;
 
-  bool HasUser(userver::storages::postgres::Transaction& transaction, std::string_view username) const;
+  std::int64_t IsUniqueToken(userver::storages::postgres::Transaction& transaction, std::string_view token) const;
 
-  std::string GenerateToken() const;
-
-  bool IsUniqueToken(std::string_view token) const;
-
-  void InsertToken(std::string_view token) const;
+  size_t InsertToken(userver::storages::postgres::Transaction& transaction, std::string_view token) const;
 
 private:
   userver::storages::postgres::ClusterPtr pg_cluster_;
+
 };
 
 } // namespace api::v1::handlers
