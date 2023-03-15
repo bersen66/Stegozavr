@@ -7,9 +7,11 @@
 #include <userver/storages/postgres/cluster.hpp>
 #include <userver/storages/postgres/component.hpp>
 
-namespace api::v1::handlers {
+namespace api::v1::handlers
+{
 
-class RegisterUser final : public userver::server::handlers::HttpHandlerJsonBase {
+class RegisterUser final : public userver::server::handlers::HttpHandlerJsonBase
+{
 public:
   static constexpr std::string_view kName = "handler-register-user";
   using userver::server::handlers::HttpHandlerJsonBase::HttpHandlerJsonBase;
@@ -18,9 +20,11 @@ public:
                const userver::components::ComponentContext& context);
 
   userver::formats::json::Value HandleRequestJsonThrow(
-      const userver::server::http::HttpRequest& request,
-      const userver::formats::json::Value& request_json,
+      const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
       userver::server::request::RequestContext& context) const override;
+
+private:
+  void InsertUser(std::string_view username) const;
 
 private:
   userver::storages::postgres::ClusterPtr pg_cluster_;

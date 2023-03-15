@@ -13,8 +13,7 @@ public:
   static constexpr std::string_view kName = "handler-decode";
   using userver::server::handlers::HttpHandlerJsonBase::HttpHandlerJsonBase;
 
-  Decode(const userver::components::ComponentConfig& config,
-         const userver::components::ComponentContext& context);
+  Decode(const userver::components::ComponentConfig& config, const userver::components::ComponentContext& context);
 
   userver::formats::json::Value HandleRequestJsonThrow(
       const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,

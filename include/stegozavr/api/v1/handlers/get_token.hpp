@@ -16,12 +16,10 @@ public:
   static constexpr std::string_view kName = "handler-get-token";
   using userver::server::handlers::HttpHandlerJsonBase::HttpHandlerJsonBase;
 
-  GetToken(const userver::components::ComponentConfig& config,
-               const userver::components::ComponentContext& context);
+  GetToken(const userver::components::ComponentConfig& config, const userver::components::ComponentContext& context);
 
   userver::formats::json::Value HandleRequestJsonThrow(
-      const userver::server::http::HttpRequest& request,
-      const userver::formats::json::Value& request_json,
+      const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
       userver::server::request::RequestContext& context) const override;
 
 private:

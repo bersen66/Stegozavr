@@ -26,14 +26,15 @@ components_manager:
             loggers:
                 default:
                     file_path: '@stderr'
-                    level: error
+                    level: info
                     overflow_behavior: discard  # Drop logs if the system is too busy to write them down.
 
         dns-client:
             fs-task-processor: main-task-processor
 
         stegozavr_db:
-            dbconnection: ''
+            # postgresql connection string format: postgresql://username:password@dns:port/db-name
+            dbconnection: 'postgresql://ortur:beoboba@localhost:5432/stegozavr_db'
             blocking_task_processor: fs-task-processor
             dns_resolver: async
 

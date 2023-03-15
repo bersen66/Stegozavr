@@ -18,8 +18,7 @@ public:
   static constexpr std::string_view kName = "handler-encode";
   using userver::server::handlers::HttpHandlerJsonBase::HttpHandlerJsonBase;
 
-  Encode(const userver::components::ComponentConfig& config,
-         const userver::components::ComponentContext& context);
+  Encode(const userver::components::ComponentConfig& config, const userver::components::ComponentContext& context);
 
   userver::formats::json::Value HandleRequestJsonThrow(
       const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,

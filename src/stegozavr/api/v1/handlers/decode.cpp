@@ -35,7 +35,7 @@ userver::formats::json::Value Decode::HandleRequestJsonThrow(const userver::serv
     {
       value_builder["status"] = "Error";
       value_builder["info"] = exc.what();
-      LOG_INFO() << "Exception occured: " << exc.what();
+      LOG_DEBUG() << "Exception occurred: " << exc.what();
     }
   }
   else
@@ -45,6 +45,7 @@ userver::formats::json::Value Decode::HandleRequestJsonThrow(const userver::serv
     value_builder["message"] = "Required field is missing. See doc for explanation.";
   }
 
+  LOG_INFO() << "Finished decoding";
   return value_builder.ExtractValue();
 }
 

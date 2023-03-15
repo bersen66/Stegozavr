@@ -3,6 +3,8 @@
 #include <userver/crypto/base64.hpp>
 #include <userver/logging/log.hpp>
 
+
+
 namespace api::v1::handlers
 {
 
@@ -12,10 +14,9 @@ Encode::Encode(const userver::components::ComponentConfig& config, const userver
   LOG_INFO() << "HANDLER: Encode started";
 }
 
-
-userver::formats::json::Value Encode::HandleRequestJsonThrow(
-    const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
-    userver::server::request::RequestContext& context) const
+userver::formats::json::Value Encode::HandleRequestJsonThrow(const userver::server::http::HttpRequest& request,
+                                                             const userver::formats::json::Value& request_json,
+                                                             userver::server::request::RequestContext& context) const
 {
   namespace json = ::userver::formats::json;
   namespace base64 = ::userver::crypto::base64;
@@ -40,7 +41,7 @@ userver::formats::json::Value Encode::HandleRequestJsonThrow(
     {
       value_builder["status"] = "Error";
       value_builder["info"] = exception.what();
-      LOG_INFO() << "Exception occured: "<< exception.what();
+      LOG_INFO() << "Exception occurred: " << exception.what();
     }
   }
   else
@@ -51,7 +52,8 @@ userver::formats::json::Value Encode::HandleRequestJsonThrow(
   }
 
   LOG_INFO() << "Encoding finished";
-  return value_builder.ExtractValue();
+  auto result = value_builder.ExtractValue();
+  return result;
 }
 
 } // namespace api::v1::handlers
