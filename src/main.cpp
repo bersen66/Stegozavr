@@ -11,7 +11,7 @@ int main(int argc, char** argv)
   // clang-format off
   const auto server_components =
       userver::components::MinimalServerComponentList()
-        .Append<userver::components::Postgres>("stegozavr-db")
+        .Append<userver::components::Postgres>("stegozavr_db")
         .Append<userver::clients::dns::Component>()
         .Append<userver::components::TestsuiteSupport>()
         .Append<api::v1::handlers::Decode>()

@@ -5,7 +5,7 @@ namespace api::v1::handlers {
 RegisterUser::RegisterUser(const userver::components::ComponentConfig& config,
                                  const userver::components::ComponentContext& context)
   : userver::server::handlers::HttpHandlerJsonBase(config, context),
-    pg_cluster_(context.FindComponent<userver::components::Postgres>("stegozavr-db").GetCluster())
+    pg_cluster_(context.FindComponent<userver::components::Postgres>("stegozavr_db").GetCluster())
 {
   LOG_INFO() << "HANDLER: RegisterUser started";
 }
