@@ -21,6 +21,15 @@ public:
   userver::formats::json::Value HandleRequestJsonThrow(
       const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
       userver::server::request::RequestContext& context) const override;
+private:
+
+  bool HasUser(userver::storages::postgres::Transaction& transaction, std::string_view username) const;
+
+  std::string GenerateToken() const;
+
+  bool IsUniqueToken(std::string_view token) const;
+
+  void InsertToken(std::string_view token) const;
 
 private:
   userver::storages::postgres::ClusterPtr pg_cluster_;
