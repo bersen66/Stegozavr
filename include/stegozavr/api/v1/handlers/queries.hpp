@@ -19,12 +19,10 @@ const ::userver::storages::postgres::Query kHasUser = {
 
 const ::userver::storages::postgres::Query kHasToken = {
     "SELECT COUNT(1) FROM tokens WHERE token_val=$1 LIMIT 1",
-    ::userver::storages::postgres::Query::Name("stegozavr_contains_token")
-};
+    ::userver::storages::postgres::Query::Name("stegozavr_contains_token")};
 
 const ::userver::storages::postgres::Query kUserCanUseThisToken = {
-    "SELECT COUNT(1) FROM usertotokenkv WHERE username=$1 and token_val=$1 and  LIMIT 1",
-    ::userver::storages::postgres::Query::Name("stegozavr_contains_token")
-};
+    "SELECT COUNT(1) FROM user_to_token_kv WHERE username=$1 and token_val=$2 and (NOW()::date - creation_date::date) < 14",
+    ::userver::storages::postgres::Query::Name("stegozavr_contains_token")};
 
 } // namespace api::v1::handlers::queries
