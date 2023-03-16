@@ -10,8 +10,18 @@ const ::userver::storages::postgres::Query kInsertUser = {
     "INSERT INTO users (username) VALUES ($1)", ::userver::storages::postgres::Query::Name("stegozavr_insert_user")};
 
 const ::userver::storages::postgres::Query kInsertToken = {
-    "INSERT INTO tokens (token_val) VALUES ($1)",
-    ::userver::storages::postgres::Query::Name("stegozavr_insert_token")};
+    "INSERT INTO tokens (token_val) VALUES ($1)", ::userver::storages::postgres::Query::Name("stegozavr_insert_token")};
+
+const ::userver::storages::postgres::Query kGetUserId = {
+    "SELECT user_id FROM users WHERE username=$1", ::userver::storages::postgres::Query::Name("stegozavr_get_user_id")};
+
+const ::userver::storages::postgres::Query kGetTokenId = {
+    "SELECT token_id FROM tokens WHERE token_val=$1",
+    ::userver::storages::postgres::Query::Name("stegozavr_get_token_id")};
+
+const ::userver::storages::postgres::Query kAttachTokenToUser = {
+    "INSERT INTO user_to_token (user_id, token_id) VALUES ($1, $2)",
+    ::userver::storages::postgres::Query::Name("stegozavr_attach_token_to_user")};
 
 const ::userver::storages::postgres::Query kHasUser = {
     "SELECT COUNT(1) FROM users WHERE username=$1 LIMIT 1",

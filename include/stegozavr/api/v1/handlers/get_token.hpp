@@ -29,9 +29,14 @@ public:
 private:
   std::string GenerateToken(userver::storages::postgres::Transaction& transaction) const;
 
-  std::int64_t IsUniqueToken(userver::storages::postgres::Transaction& transaction, std::string_view token) const;
+  bool IsUniqueToken(userver::storages::postgres::Transaction& transaction, std::string_view token) const;
 
   size_t InsertToken(userver::storages::postgres::Transaction& transaction, std::string_view token) const;
+
+
+  std::int64_t UserId(userver::storages::postgres::Transaction& transaction, std::string_view username) const;
+
+  std::int64_t TokenId(userver::storages::postgres::Transaction& transaction, std::string_view token) const;
 
 private:
   userver::storages::postgres::ClusterPtr pg_cluster_;
