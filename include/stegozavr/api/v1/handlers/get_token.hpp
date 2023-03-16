@@ -40,7 +40,6 @@ private:
 
 private:
   userver::storages::postgres::ClusterPtr pg_cluster_;
-
 };
 
 } // namespace api::v1::handlers

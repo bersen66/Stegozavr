@@ -32,7 +32,7 @@ const ::userver::storages::postgres::Query kHasToken = {
     ::userver::storages::postgres::Query::Name("stegozavr_contains_token")};
 
 const ::userver::storages::postgres::Query kUserCanUseThisToken = {
-    "SELECT COUNT(1) FROM user_to_token_kv WHERE username=$1 and token_val=$2 and (NOW()::date - creation_date::date) < 14",
+    "SELECT COUNT(1) FROM usertotokenkv WHERE username=$1 and token_val=$2 and (NOW()::date - creation_date::date)<14",
     ::userver::storages::postgres::Query::Name("stegozavr_check_permission")};
 
 } // namespace api::v1::handlers::queries

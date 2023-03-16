@@ -4,12 +4,14 @@
 #include <userver/server/handlers/http_handler_json_base.hpp>
 #include <userver/utils/daemon_run.hpp>
 
+#include <userver/storages/postgres/cluster.hpp>
+#include <userver/storages/postgres/component.hpp>
+
 namespace api::v1::handlers
 {
 
 /**
- * This API handler is
- *
+ * This API handler is ...
  */
 
 class Encode final : public userver::server::handlers::HttpHandlerJsonBase
@@ -25,6 +27,7 @@ public:
       userver::server::request::RequestContext& context) const override;
 
 private:
+  userver::storages::postgres::ClusterPtr pg_cluster_;
 };
 
 } // namespace api::v1::handlers

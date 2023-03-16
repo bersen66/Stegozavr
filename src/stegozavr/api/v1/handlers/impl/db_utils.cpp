@@ -2,14 +2,21 @@
 
 #include "db_utils.hpp"
 
-
-namespace pg = userver::storages::postgres;
-namespace api::v1::handlers::impl {
-
-bool HasUser(pg::ClusterPtr pg_cluster, std::string_view username)
+namespace api::v1::handlers::impl
 {
-  auto res = pg_cluster->Execute(pg::ClusterHostType::kSlave, queries::kHasUser, username);
+
+bool HasUser(userver::storages::postgres::ClusterPtr pg_cluster, std::string_view username)
+{
+  auto res = pg_cluster->Execute(userver::storages::postgres::ClusterHostType::kSlave, queries::kHasUser, username);
   return res.AsSingleRow<std::int64_t>();
 }
 
-} // api::v1::handlers::impl
+bool UserCanUseThisToken(userver::storages::postgres::ClusterPtr pg_cluster, std::string_view username,
+                         std::string_view token)
+{
+  auto res = pg_cluster->Execute(userver::storages::postgres::ClusterHostType::kSlave, queries::kUserCanUseThisToken,
+                                 username, token);
+  return (res.AsSingleRow<std::int64_t>() != 0);
+}
+
+} // namespace api::v1::handlers::impl

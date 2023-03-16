@@ -35,6 +35,7 @@ add_library(
         third_party/in_image_hider/src/hider_png.cpp
 )
 
+
 find_package(PNG REQUIRED)
 if (${PNG_FOUND})
     include_directories(${PNG_INCLUDE_DIRS})

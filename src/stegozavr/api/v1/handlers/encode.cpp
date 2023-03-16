@@ -3,6 +3,7 @@
 #include <userver/crypto/base64.hpp>
 #include <userver/logging/log.hpp>
 
+#include "impl/db_utils.hpp"
 
 
 namespace api::v1::handlers
@@ -10,6 +11,7 @@ namespace api::v1::handlers
 
 Encode::Encode(const userver::components::ComponentConfig& config, const userver::components::ComponentContext& context)
     : userver::server::handlers::HttpHandlerJsonBase(config, context)
+    , pg_cluster_(context.FindComponent<userver::components::Postgres>("stegozavr_db").GetCluster())
 {
   LOG_INFO() << "HANDLER: Encode started";
 }
@@ -27,6 +29,17 @@ userver::formats::json::Value Encode::HandleRequestJsonThrow(const userver::serv
 
   if (request_json.HasMember("text_to_hide") && request_json.HasMember("file_content"))
   {
+    const auto& username = request_json["username"].As<std::string>();
+    const auto& token = request_json["token"].As<std::string>();
+
+    if (!impl::UserCanUseThisToken(pg_cluster_, username, token)) {
+      LOG_DEBUG() << "Identification is failed.";
+      value_builder["status"] = "Error";
+      value_builder["message"] = "Identification is failed.";
+      return value_builder.ExtractValue();
+    }
+
+
     LOG_DEBUG() << "Request contains all fields";
 
     auto file_content = base64::Base64Decode(request_json["file_content"].As<std::string>());
