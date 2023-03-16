@@ -50,24 +50,24 @@ components_manager:
 #######################################################################################################################
 
         handler-decode:
-            path: /v1/decode                       # Registering handler by URL '/decode'.
+            path: /v1/decode                    # Registering handler by URL 'v1/decode'.
             method: GET                         # It will only reply to GET requests.
             task_processor: fs-task-processor   # Run it on File System bound task processor
 
         handler-encode:
-            path: /v1/encode                       # Registering handler by URL '/encode'.
+            path: /v1/encode                    # Registering handler by URL 'v1/encode'.
             method: GET                         # It will only reply to GET requests.
             task_processor: fs-task-processor   # Run it on File System task processor
 
         handler-register-user:
-            path: /v1/register
-            method: POST
-            task_processor: main-task-processor
+            path: /v1/register                  # Registering handler by URL 'v1/register'.
+            method: POST                        # It will only reply to POST requests.
+            task_processor: main-task-processor # Run it on main task processor
 
         handler-get-token:
-            path: /v1/get_token
-            method: GET
-            task_processor: main-task-processor
+            path: /v1/get_token                 # Registering handler by URL '/v1/get_token'.
+            method: GET                         # It will only reply to GET requests.
+            task_processor: main-task-processor # Run it on main task processor
 
 
 
