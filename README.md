@@ -6,7 +6,7 @@
 
 To build service from sources you have to install conan and cmake. 
 ```
-$ pip install conan
+$ pip install conan==1.55.0
 $ pip install cmake
 ```
 
