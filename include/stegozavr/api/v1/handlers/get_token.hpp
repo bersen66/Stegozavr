@@ -14,7 +14,7 @@ namespace api::v1::handlers
 {
 
 /**
- * @class Encode.
+ * @class GetToken.
  *
  * @brief Обработка http-запроса на генерацию access-токена, используемого при работе с API.
  *

@@ -7,9 +7,20 @@
 #include <userver/storages/postgres/cluster.hpp>
 #include <userver/storages/postgres/component.hpp>
 
+
 namespace api::v1::handlers
 {
 
+
+/**
+ * @class RegisterUser.
+ *
+ * @brief Обработка http-запроса на регистрацию пользователя.
+ *
+ * Вызывается userver-ом при обработке пути /v1/register  с методом POST.
+ *
+ * Инстанцируется userver-ом неявно и в единственном экземпляре.
+ */
 class RegisterUser final : public userver::server::handlers::HttpHandlerJsonBase
 {
 public:
