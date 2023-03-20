@@ -2,6 +2,8 @@
 #include <istream>
 #include <string>
 
+///@file stegozavr/engine/files/files.hpp
+
 namespace stegozavr::engine::utils::blocking
 {
 

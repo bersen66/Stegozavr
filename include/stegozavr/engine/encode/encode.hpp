@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 
+
+///@file stegozavr/engine/encode/encode.hpp
+
 namespace stegozavr::engine::blocking
 {
 /**

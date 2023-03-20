@@ -3,8 +3,9 @@
 #include <string>
 #include <string_view>
 
-namespace stegozavr::engine::blocking {
+///@file stegozavr/engine/decode/decode.hpp
 
+namespace stegozavr::engine::blocking {
 
 /**
  * @param image_data - Изображение в бинарном виде.
