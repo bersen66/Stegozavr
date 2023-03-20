@@ -5,6 +5,11 @@
 
 #include <stegozavr/api/handlers.hpp>
 
+
+/**
+ * Entry point.
+ */
+
 int main(int argc, char** argv)
 {
   LOG_INFO() << "STEGOZAVR STARTED";

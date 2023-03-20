@@ -49,6 +49,7 @@ public:
    *
    * @return userver::formats::json::Value - результат работы обработчика.
    *
+   * Обработка запроса на сокрытие текста в теле изображения.
    */
   userver::formats::json::Value HandleRequestJsonThrow(
       const userver::server::http::HttpRequest& request, const userver::formats::json::Value& request_json,
