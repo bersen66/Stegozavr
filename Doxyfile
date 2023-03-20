@@ -1,0 +1,7 @@
+PROJECT_NAME = "Stegozavr"
+PROJECT_NUMBER = 0.1
+PROJECT_BRIEF = "Стеганографическое API"
+OUTPUT_DIRECTORY = docs
+GENERATE_LATEX = NO
+INPUT = include
+RECURSIVE = YES
