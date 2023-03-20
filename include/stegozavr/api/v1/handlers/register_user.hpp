@@ -8,6 +8,8 @@
 #include <userver/storages/postgres/component.hpp>
 
 
+/// @ingroup handlers
+
 namespace api::v1::handlers
 {
 

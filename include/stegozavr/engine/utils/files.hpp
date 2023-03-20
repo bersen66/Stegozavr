@@ -2,11 +2,15 @@
 #include <istream>
 #include <string>
 
-///@file stegozavr/engine/files/files.hpp
+/// @ingroup engine
 
 namespace stegozavr::engine::utils::blocking
 {
-
+/**
+ * @fn ContentOf
+ * @param input
+ * @return
+ */
 std::string ContentOf(std::istream& input);
 
 } // namespace stegozavr::engine::utils::blocking

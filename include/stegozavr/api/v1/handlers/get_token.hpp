@@ -10,6 +10,9 @@
 #include <string>
 #include <string_view>
 
+
+/// @ingroup handlers
+
 namespace api::v1::handlers
 {
 

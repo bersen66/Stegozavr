@@ -3,11 +3,12 @@
 #include <string>
 #include <string_view>
 
-///@file stegozavr/engine/decode/decode.hpp
+/// @ingroup engine
 
 namespace stegozavr::engine::blocking {
 
 /**
+ * @fn Decode
  * @param image_data - Изображение в бинарном виде.
  * @return Текст сообщения
  */
