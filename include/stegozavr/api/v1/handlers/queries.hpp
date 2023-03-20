@@ -3,6 +3,8 @@
 #include <userver/storages/postgres/cluster.hpp>
 #include <userver/storages/postgres/component.hpp>
 
+
+/// @brief Запросы к БД, используемые в обработчиках.
 namespace api::v1::handlers::queries
 {
 
