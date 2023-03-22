@@ -1,6 +1,6 @@
 # Stegozavr.
 
-* Just university project.
+* Implementation of steganographic API using ```C++``` and ```userver-framework```.
 
 ## Installation
 
