@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS tokens
 (
     token_id      serial      NOT NULL PRIMARY KEY,
-    token_val     UUID UNIQUE NOT NULL,
+    token_val     TEXT UNIQUE NOT NULL,
     creation_date timestamp   NOT NULL DEFAULT NOW()
 );
 
