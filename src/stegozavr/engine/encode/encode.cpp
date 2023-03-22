@@ -1,5 +1,5 @@
 #include <stegozavr/engine/encode/encode.hpp>
-#include <stegozavr/engine/utils/files.hpp>
+
 #include <userver/fs/blocking/temp_file.hpp>
 
 #include <userver/logging/log.hpp>
