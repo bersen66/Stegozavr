@@ -8,6 +8,7 @@
 namespace stegozavr::engine::blocking {
 
 /**
+ * @brief Извлечение текста из изображения
  * @fn Decode
  * @param image_data - Изображение в бинарном виде.
  * @return Текст сообщения

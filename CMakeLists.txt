@@ -31,7 +31,6 @@ add_library(
         src/stegozavr/api/v1/handlers/impl/db_utils.cpp
         src/stegozavr/engine/decode/decode.cpp
         src/stegozavr/engine/encode/encode.cpp
-        src/stegozavr/engine/utils/files.cpp
         third_party/in_image_hider/src/hider_png.cpp
 )
 

@@ -24,8 +24,7 @@ userver::formats::json::Value Decode::HandleRequestJsonThrow(const userver::serv
   LOG_INFO() << "Started decoding";
   json::ValueBuilder value_builder;
 
-  if (request_json.HasMember("username") && request_json.HasMember("token") && request_json.HasMember("username") &&
-      request_json.HasMember("token") && request_json.HasMember("file_content"))
+  if (request_json.HasMember("username") && request_json.HasMember("token") && request_json.HasMember("file_content"))
   {
     try
     {

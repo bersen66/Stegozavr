@@ -11,3 +11,4 @@ IndentAccessModifiers: false
 AccessModifierOffset: -2
 PointerAlignment: Left
 IndentWidth: 2
+AlwaysBreakTemplateDeclarations: Yes
