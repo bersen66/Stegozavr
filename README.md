@@ -25,4 +25,4 @@ $ pip install cmake
 
 ### Generate documentation:
 
-* ```$ doxygen``` - this folder.
+* ```$ doxygen``` - in this folder.
