@@ -12,7 +12,7 @@ postgresql://{username}:{password}@{dns}:{port}/{db-name}
 ```
 
 Databse must match this schema: 
-```postgresql
+```sql
 CREATE TABLE IF NOT EXISTS users
 (
     user_id  serial PRIMARY KEY NOT NULL,
